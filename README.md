@@ -1,96 +1,88 @@
-# Kubernetes - Introdiution to basic kubectl commands. 
+<div align="center" id="top"> 
+  <img src="./images/kubectl-logo-medium.png" alt="kubernetes" />
 
-![kubectl logo](./images/kubectl-logo-medium.png)
+  &#xa0;
 
-### Requirements (I'm useing CentOS 7)
-- System CentOS 7 or 8 
-- A user account with sudo privileges
-- Access to a terminal widow / command line 
+  <!-- <a href="https://git.netlify.app">Demo</a> -->
+</div>
 
-### Content"
-- [Go to *Requirements* ](https://github.com/aleksander124/containers/blob/main/kubernetes/README.md#requirements-im-useing-centos-7)
-- [Go to *Minikube Installation*](https://github.com/aleksander124/containers/blob/main/kubernetes/README.md#minikube-installation)
-- [Go to *Important Commands*](https://github.com/aleksander124/containers/blob/main/kubernetes/README.md#important-commands-for-minikube)
+<h1 align="center">Kubernetes - minikube</h1>
 
-### Minikube installation
-#### 1. Update the system befor instalation minikube
-```
-sudo yum - y update
-```
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/aleksander124/git?color=56BEB8">
 
-#### 2. Install KVM hypervisor
-1. We’ll install KVM and QEMU plus some tools like libguestfs-tools and virt-top which comes in handy when administering KVM. Install them as below:
-```
-sudo yum -y install epel-release
-sudo yum -y install gcc libvirt libvirt-devel qemu-kvm virt-install virt-top libguestfs-tools bridge-utils
-```
-2. Confirm that the kernel modules are loaded:
-```
-$ sudo lsmod | grep kvm
-```
-> kvm_intel 147785 0
-> kvm 464964 1 kvm_intel
-3. Start and enable libvirtd service:
-```
-sudo systemctl start libvirtd
-sudo systemctl enable libvirtd
-```
-4. You user should be part of libvirt group.
-```
-sudo usermod -a -G libvirt $(whoami)
-newgrp libvirt
-```
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/aleksander124/git?color=56BEB8">
 
-#### 3. Install minikube 
-1. Download the Minikube binary package using the `wget` command:
-```
-wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-```
-2. Then, use the `chmod` command to give the file executive permission:
-```
-chmod +x minikube-linux-amd64
-```
-3. Finally, move the file to the `/usr/local/bin` directory:
-```
-sudo mv minikube-linux-amd64 /usr/local/bin/minikube
-```
-4. With that, you have finished setting up Minikube. Verify the installation by checking the version of the software:
-```
-minikube version
-```
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/aleksander124/git?color=56BEB8">
 
-#### 4. Install kubectl
-1. We need kubectl which is a command-line tool used to deploy and manage applications on Kubernetes.
-```
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-```
-2. Give the file executable bit and move to a location in your PATH.
-```
-chmod +x kubectl
-sudo mv kubectl  /usr/local/bin/
-```
-3. Confirm the version of kubectl installed.
-```
-kubectl version
-```
+  <img alt="License" src="https://img.shields.io/github/license/aleksander124/git?color=56BEB8">
 
-#### 5. Starting minikube (Better use basic user not root)
-1. Add your username to libvirt group:
-```
-sudo usermod -aG libvirt $USER
-```
-2. To create a minikube VM with the default options, run:
-```
-minikube start
-```
-3. The default container runtime to be used is docker, but you can also use crio or containerd:
-```
-minikube start --container-runtime=cri-o
-minikube start --container-runtime=containerd
-```
-5. (**IMPORTANT**) If you have more than one hypervisor, then specify it. 
-```
-minikube start --vm-driver kvm2
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/aleksander124/git?color=56BEB8" /> -->
+
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/aleksander124/git?color=56BEB8" /> -->
+
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/aleksander124/git?color=56BEB8" /> -->
+</p>
+
+<!-- Status -->
+
+<h4 align="center"> 
+	🚧  GIT 🚀 Under construction...  🚧
+</h4> 
+
+<hr>
+
+<p align="center">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/aleksander124" target="_blank">Author</a>
+</p>
+
+<br>
+
+## :dart: About ##
+
+Small projcet for learing kubenretes commands and containerization with minikube. In this repository can be found some information about minikube instalation process and some usefull commands to develope your skills in containerization. I will be posting all the files about my kubernetes learning here.
+
+## :sparkles: Features ##
+
+:heavy_check_mark: Feature 1;\
+:heavy_check_mark: Feature 2;\
+:heavy_check_mark: Feature 3;
+
+## :rocket: Technologies ##
+
+The following tools were used in this project:
+
+- [Minikube](https://minikube.sigs.k8s.io/)
+- [Kubectl](https://kubernetes.io/)
+- [Docker](https://www.docker.com/)
+- [Nginx](https://www.nginx.com/)
+
+## :white_check_mark: Requirements ##
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Minikube](https://minikube.sigs.k8s.io/docs/start/), [Kubectl](https://kubernetes.io/)   installed.
+
+## :checkered_flag: Starting ##
+
+```bash
+# Clone this project
+$ git clone https://github.com/aleksander124/git
+
+# The server will initialize in the <http://localhost:3000>
 ```
 
-### Important commands for minikube 
+## :memo: License ##
+
+This project is under license from GNU. For more details, see the [LICENSE](LICENSE.md) file.
+
+
+Made with :heart: by <a href="https://github.com/aleksander124" target="_blank">aleksander124</a>
+
+&#xa0;
+
+<a href="#top">Back to top</a>
