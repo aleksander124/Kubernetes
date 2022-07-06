@@ -50,9 +50,10 @@ Small projcet for learing kubenretes commands and containerization with minikube
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Instalation minikube on your system;\
+:heavy_check_mark: Create some deployments;\
+:heavy_check_mark: Create first service and IP translation;\
+:heavy_check_mark: Quick start some services in pods like nginx or mongo;
 
 ## :rocket: Technologies ##
 
@@ -73,7 +74,7 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [
 # Clone this project
 $ git clone https://github.com/aleksander124/git
 
-# The server will initialize in the <http://localhost:3000>
+
 ```
 
 ## :memo: License ##
