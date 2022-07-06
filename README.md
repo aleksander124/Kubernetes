@@ -1,15 +1,5 @@
 <h1 align="center">Kubernetes - minikube</h1>
 
-<div align="center" id="top"> 
-  <img src="./images/kubectl-logo-medium.png" alt="kubernetes" />
-
-  &#xa0;
-
-  <!-- <a href="https://git.netlify.app">Demo</a> -->
-</div>
-
-
-
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/aleksander124/git?color=56BEB8">
 
@@ -26,6 +16,13 @@
   <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/aleksander124/git?color=56BEB8" /> -->
 </p>
 
+<div align="center" id="top"> 
+  <img src="./images/kubectl-logo-medium.png" alt="kubernetes" />
+
+  &#xa0;
+
+  <!-- <a href="https://git.netlify.app">Demo</a> -->
+</div>
 <!-- Status -->
 
 <h4 align="center"> 
