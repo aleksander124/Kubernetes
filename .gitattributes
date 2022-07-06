@@ -1,4 +1,0 @@
-mongo/mongo-test/** binary
-mongo/mongodb-express/** binary
-*.yaml text=auto eol=lf
-*.yml text=auto eol=lf
