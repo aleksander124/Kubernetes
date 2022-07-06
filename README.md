@@ -1,19 +1,19 @@
 <h1 align="center">Kubernetes - minikube</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/aleksander124/git?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/aleksander124/kubernetes?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/aleksander124/git?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/aleksander124/kubernetes?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/aleksander124/git?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/aleksander124/kubernetes?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/aleksander124/git?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/aleksander124/kubernetes?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/aleksander124/git?color=56BEB8" /> -->
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/aleksander124/kubernetes?color=56BEB8" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/aleksander124/git?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/aleksander124/kubernetes?color=56BEB8" /> -->
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/aleksander124/git?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/aleksander124/kubernetes?color=56BEB8" /> -->
 </p>
 
 <div align="center" id="top"> 
