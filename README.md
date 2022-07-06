@@ -1,5 +1,7 @@
 # Kubernetes - Introdiution to basic kubectl commands. 
 
+![kubectl logo](./images/kubectl-logo-medium.png)
+
 ### Requirements (I'm useing CentOS 7)
 - System CentOS 7 or 8 
 - A user account with sudo privileges
