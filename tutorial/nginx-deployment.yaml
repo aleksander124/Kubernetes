@@ -21,6 +21,5 @@ spec:
         enviroment: test
     spec:
       containers:
-        - image: nginx:1.16
-          name: niginx
-          
+      - image: nginx:1.16
+        name: nginx
