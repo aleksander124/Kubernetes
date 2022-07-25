@@ -10,6 +10,6 @@ spec:
     - name: httpd
       image: 'mcovglobal.azurecr.io/mcov-pl/devops/php-login-site:latest'
       ports:
-        - containerPort: 8080
+        - containerPort: 80
   imagePullSecrets:
   - name: acr-secret
