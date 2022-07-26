@@ -3,11 +3,11 @@ kind: Pod
 metadata:
   name: php-login-site
   labels:
-    app: httpd
+    app: login
   namespace: poligon
 spec:
   containers:
-    - name: httpd
+    - name: login
       image: 'mcovglobal.azurecr.io/mcov-pl/devops/php-login-site:latest'
       ports:
         - containerPort: 80
