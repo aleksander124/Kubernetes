@@ -20,5 +20,3 @@ spec:
             - containerPort: 80
       imagePullSecrets:
       - name: acr-secret
-  strategy: 
-    type: "Rolling"
