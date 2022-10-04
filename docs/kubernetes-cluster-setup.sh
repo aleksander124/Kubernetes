@@ -1,3 +1,4 @@
+#!/bin/bash
 systemctl disable --now ufw
 
 {cat >> /etc/modules-load.d/containerd.conf <<EOF

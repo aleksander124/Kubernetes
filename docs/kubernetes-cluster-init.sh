@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo kubeadm init \
   --pod-network-cidr=172.16.0.0/16 \               # !!! Important this subnet cant overlap your subnet 
   --cri-socket unix:///run/containerd/containerd.sock \         # for containerd runtime
