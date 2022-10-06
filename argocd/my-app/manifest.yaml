@@ -5,7 +5,7 @@ metadata:
 spec:
   limits:
   - max:
-      cpu: "400m"
+      cpu: "800m"
     min:
       cpu: "200m"
     type: Container
