@@ -3,7 +3,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-server-ingress
-  namespace: <your user's argocd ns>
+  namespace: olek-argo
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt
@@ -12,7 +12,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
 spec:
   rules:
-  - host: <your username>-argocd.mcov-workshop.econsulting.co
+  - host: olek-argocd.mcov-workshop.econsulting.co
     http:
       paths:
       - backend:
@@ -24,5 +24,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - <your user's argocd ns>-argocd.mcov-workshop.econsulting.co
+    - olek-argocd.mcov-workshop.econsulting.co
     secretName: argocd-test-secret-auto
