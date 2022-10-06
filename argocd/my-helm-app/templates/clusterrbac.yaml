@@ -1,0 +1,44 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: argocd-manager-role
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- nonResourceURLs:
+  - '*'
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ns-viewer
+rules:
+- apiGroups:
+  - "*"
+  resources:
+  - "namespaces"
+  verbs:
+  - "get"
+  - "list"
+  - "watch"
+{{- range .Values.users }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ . }}
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: ns-viewer
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
