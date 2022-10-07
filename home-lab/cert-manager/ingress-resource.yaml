@@ -7,6 +7,10 @@ metadata:
   labels:
     name: myingress
 spec:
+<<<<<<< HEAD
+=======
+  IngressClassName: <your ingress class name>     # kubectl get ingresclass -n <namespace>
+>>>>>>> 38de2ffcf024621303088e1e0e2ee2b003ccf3d4
   tls:
   - hosts:
     - example.k8s.home-lab.local
