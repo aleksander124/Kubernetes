@@ -2,7 +2,7 @@ apiVersion: v1
 kind: LimitRange
 metadata:
   name: "resource-limits" 
-  namespace: olek-apps
+  namespace: argocd
 spec:
   limits:
     -
