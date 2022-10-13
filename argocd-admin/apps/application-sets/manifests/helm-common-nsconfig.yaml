@@ -1,0 +1,60 @@
+# for now only a test appset for common ns-es
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-common-nsconfig 
+  namespace: argocd-admin
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          env: "openshift"
+      values:
+        valuesFile: "openshift.yaml"
+        targetRevision: "master"
+  # - clusters:
+  #     selector:
+  #       matchLabels:
+  #         env: "prod"
+  #     values:
+  #       valuesFile: "prod.yaml"
+  #       targetRevision: master
+  - clusters:
+      selector:
+        matchLabels:
+          env: "openshift"
+      values:
+        valuesFile: "openshift.yaml"
+        targetRevision: "master"
+  template:
+    metadata:
+      name: '{{name}}-helm-common-nsconfig'
+    spec:
+      project: default
+      syncPolicy:
+        retry:
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+          limit: 5
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+      source:
+        repoURL: 'https://playground-okonal@dev.azure.com/playground-okonal/openshift-gitops/_git/openshift-gitops'
+        targetRevision: '{{values.targetRevision}}'
+        path: 'argocd-admin/apps/application-sets/helm-common-nsconfig'
+        helm:
+          valueFiles:
+          - 'cluster-values/{{values.valuesFile}}'
+          - 'values.yaml' # seems to be added by default anyway
+          version: v3
+      destination:
+        server: '{{server}}'
+        namespace: argocd-admin
