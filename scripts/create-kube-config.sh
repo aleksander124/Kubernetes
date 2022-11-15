@@ -6,7 +6,8 @@
 # 2. Paste there correct values befor run this script                     #
 # 3. The case is to get all service accounts in separeted files witch     #
 #    secrets and contexts. After start you should get all files you want  #
-
+#-------------------------------------------------------------------------#
+#-------------------------author: Aleksander Okoń-------------------------#
 
 CLUSTER="<name of cluster>"             # For example "new-prod"
 NEW_PROD="    certificate-authority-data: <cert>"       # Here you should paste the cert data from your ./kube/config file - you can find it on one of master nodes
