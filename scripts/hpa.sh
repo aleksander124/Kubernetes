@@ -1,0 +1,1 @@
+kubectl get hpa |  awk '{print $6}' | awk '{s+=$1} END {printf "%.0f\n", s}'
