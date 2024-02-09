@@ -1,36 +1,34 @@
 #!/bin/bash
 
 # Your Azure Container Registry name
-acr_name="youracrname"
+ACR_NAME="youracrname"
 
-# Log in to Azure (if not already logged in)
-az login
+ACR_IMAGES=()
 
-# Set the Azure Container Registry as the active registry
-az acr login --name "$acr_name"
+REPOSITORIES=$(az acr repository list --name "$ACR_NAME" --output json | jq -r '.[]')
 
-# Get a list of all repositories in the ACR
-repositories=$(az acr repository list --name "$acr_name" --output json)
+# Set the threshold date (1 year ago)
+THRESHOLD_DATE=$(date -d "1 year ago" --utc +"%Y-%m-%dT%H:%M:%SZ")
 
-# Calculate the date 30 days ago in the format required by Azure CLI
-date_threshold=$(date -d "30 days ago" --utc +"%Y-%m-%dT%H:%M:%SZ")
+for REPOSITORY_NAME in $REPOSITORIES; do
+  # Get a list of image manifests from the ACR
+  IMAGE_LIST=$(az acr repository show-manifests --name "$ACR_NAME" --repository "$REPOSITORY_NAME" --orderby time_desc --detail --output json)
 
-# Loop through each repository and list images older than 30 days
-for repository in $(echo "$repositories" | jq -r '.[]'); do
-    echo "Repository: $repository"
+  # Parse the image manifests and filter images older than 1 year
+  OLDEST_IMAGES=$(echo "$IMAGE_LIST" | jq -r --arg THRESHOLD "$THRESHOLD_DATE" '.[] | select(.createdTime < $THRESHOLD) | .tags[0]')
 
-    # List all tags (images) for the current repository
-    tags=$(az acr repository show-tags --name "$acr_name" --repository "$repository" --orderby time_desc --output json)
-
-    # Loop through each tag and check if it's older than 30 days
-    for tag in $(echo "$tags" | jq -r '.[]'); do
-        image_creation_time=$(az acr repository show-manifests --name "$acr_name" --repository "$repository" --reference "$tag" --query "lastUpdateTime" --output tsv)
-
-        if [[ "$image_creation_time" < "$date_threshold" ]]; then
-            echo "Tag: $tag (Created: $image_creation_time)"
-        fi
-    done
-
-    # Add a separator for better readability
-    echo "--------------------------"
+  # Check if OLDEST_IMAGES is not empty before storing
+  while IFS= read -r TAG; do
+    ACR_IMAGES+=("$ACR_NAME.azurecr.io/$REPOSITORY_NAME:$TAG")
+  done <<< "$OLDEST_IMAGES"
 done
+
+# Print the final output as a list
+echo "ACR Images:"
+for image in "${ACR_IMAGES[@]}"; do
+  echo "$image"
+done
+
+# Count the number of images
+image_count=${#ACR_IMAGES[@]}
+echo "Number of Images: $image_count"
