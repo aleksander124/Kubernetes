@@ -1,0 +1,35 @@
+# Stage 1: Build stage
+FROM registry.access.redhat.com/ubi8/ubi:8.5 AS builder
+
+# Set the version of kubectl to install
+ENV KUBECTL_VERSION="1.22.2"
+
+# Install required tools and dependencies
+RUN dnf upgrade -y && \
+    dnf install -y ca-certificates curl gnupg && \
+    rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
+    curl -o azure-cli.repo https://packages.microsoft.com/config/rhel/8/prod.repo && \
+    mv azure-cli.repo /etc/yum.repos.d/ && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf /var/cache/yum
+
+# Install Azure CLI and kubectl
+RUN dnf install -y azure-cli curl && \
+    curl -LO "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl" && \
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+# Stage 2: Final stage
+FROM registry.access.redhat.com/ubi8/ubi:8.5 AS final
+
+# Copy kubectl binary from the builder stage
+COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
+COPY --from=builder /etc/yum.repos.d/azure-cli.repo /etc/yum.repos.d/azure-cli.repo
+
+# Install Azure CLI from the Microsoft repository
+RUN dnf install -y azure-cli && dnf clean all
+
+# Verify kubectl installation
+RUN kubectl version --client
+
+# Verify az cli installation during runtime
+CMD ["az", "--version"]
