@@ -12,7 +12,7 @@ for cluster in "${clusters[@]}"; do
   # Set the kubectl context to the current cluster
   kubectl config use-context "$cluster"
   # Get the images from all deployments in the current cluster
-  images=$(kubectl get deployments --all-namespaces -o json | jq -r '.items[].spec.template.spec.containers[].image | select(startswith("mcovglobal.azurecr.io"))')
+  images=$(kubectl get deployments --all-namespaces -o json | jq -r '.items[].spec.template.spec.containers[].image ')
   output+=("$images") # Add the images to the output array
   echo "--------------------------"
 done
