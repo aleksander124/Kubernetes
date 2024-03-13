@@ -1,4 +1,4 @@
-<h1 align="center">Kubernetes - minikube</h1>
+<h1 align="center">Kubernetes</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/aleksander124/kubernetes?color=56BEB8">
