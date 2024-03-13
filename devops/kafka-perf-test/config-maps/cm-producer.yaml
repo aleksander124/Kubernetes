@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-producer-config
+data:
+  producer.properties: |
+    bootstrap.servers=10.6.12.137:32100,10.6.12.138:32100,10.6.12.139:32100
+    compression.type=none
+    # Add other properties here

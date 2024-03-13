@@ -1,0 +1,2 @@
+# Stage 1: Build stage
+FROM registry.access.redhat.com/ubi8/ubi:8.5 AS builder

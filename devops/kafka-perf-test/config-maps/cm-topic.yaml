@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-config
+data:
+  bootstrap-server: "10.6.12.137:32100"
+  partitions: "5"
+  topic-name: "perf-test"
