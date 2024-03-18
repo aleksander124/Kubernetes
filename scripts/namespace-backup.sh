@@ -3,14 +3,20 @@
 # Function to display script usage
 usage() {
     echo "Usage: $0 -n <namespace>"
+    echo "Options:"
+    echo "  -n <namespace>: Specify the namespace to export resources from."
+    echo "  -h: Display this help message."
     exit 1
 }
 
 # Parse command line options
-while getopts ":n:" opt; do
+while getopts ":n:h" opt; do
     case ${opt} in
         n )
             namespace=$OPTARG
+            ;;
+        h )
+            usage
             ;;
         \? )
             echo "Invalid option: $OPTARG" 1>&2
