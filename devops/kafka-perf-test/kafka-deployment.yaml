@@ -16,7 +16,7 @@ spec:
       inter.broker.protocol.version: '3.6'
     storage:
       type: persistent-claim
-      size: 10Gi
+      size: 50Gi
       class: 'ocs-storagecluster-ceph-rbd'
     listeners:
       - name: plain
@@ -48,5 +48,7 @@ spec:
     userOperator: {}
   zookeeper:
     storage:
-      type: ephemeral
+      type: persistent-claim
+      class: ocs-storagecluster-ceph-rbd
+      size: 5Gi
     replicas: 3
