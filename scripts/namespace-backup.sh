@@ -39,39 +39,44 @@ fi
 # Output file
 output_file="kubernetes_backup.yaml"
 
-# Start with empty file
+# Start with an empty file
 : > "$output_file"
+
+# Function to remove unwanted fields from YAML
+remove_unwanted_fields() {
+    awk '!/^[[:blank:]]*(creationTimestamp|generation|resourceVersion|uid):/ {print}'
+}
 
 # Export Deployments
 echo "Exporting Deployments from namespace $namespace..."
-kubectl get deployments -n "$namespace" -o yaml >> "$output_file"
+kubectl get deployments -n "$namespace" -o yaml | remove_unwanted_fields >> "$output_file"
 
 # Export Services
 echo "Exporting Services from namespace $namespace..."
-kubectl get services -n "$namespace" -o yaml >> "$output_file"
+kubectl get services -n "$namespace" -o yaml | remove_unwanted_fields >> "$output_file"
 
 # Export Ingresses
 echo "Exporting Ingresses from namespace $namespace..."
-kubectl get ingresses -n "$namespace" -o yaml >> "$output_file"
+kubectl get ingresses -n "$namespace" -o yaml | remove_unwanted_fields >> "$output_file"
 
 # Export Secrets
 echo "Exporting Secrets from namespace $namespace..."
-kubectl get secrets -n "$namespace" -o yaml >> "$output_file"
+kubectl get secrets -n "$namespace" -o yaml | remove_unwanted_fields >> "$output_file"
 
 # Export ConfigMaps
 echo "Exporting ConfigMaps from namespace $namespace..."
-kubectl get configmaps -n "$namespace" -o yaml >> "$output_file"
+kubectl get configmaps -n "$namespace" -o yaml | remove_unwanted_fields >> "$output_file"
 
 # Export ServiceAccounts
 echo "Exporting ServiceAccounts from namespace $namespace..."
-kubectl get serviceaccounts -n "$namespace" -o yaml >> "$output_file"
+kubectl get serviceaccounts -n "$namespace" -o yaml | remove_unwanted_fields >> "$output_file"
 
 # Export DaemonSets
 echo "Exporting DaemonSets from namespace $namespace..."
-kubectl get daemonsets -n "$namespace" -o yaml >> "$output_file"
+kubectl get daemonsets -n "$namespace" -o yaml | remove_unwanted_fields >> "$output_file"
 
 # Export StatefulSets
 echo "Exporting StatefulSets from namespace $namespace..."
-kubectl get statefulsets -n "$namespace" -o yaml >> "$output_file"
+kubectl get statefulsets -n "$namespace" -o yaml | remove_unwanted_fields >> "$output_file"
 
 echo "Backup completed to $output_file"
