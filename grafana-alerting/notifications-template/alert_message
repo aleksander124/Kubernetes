@@ -1,0 +1,10 @@
+{{ define "alert_message" }}
+	{{ if gt (len .Alerts.Firing) 0 }}
+	**Firing:**
+		{{ range .Alerts.Firing }} {{ template "alert" .}} {{ end }}
+	{{ end }}
+		{{ if gt (len .Alerts.Resolved) 0 }}
+	**Resolved:**
+		{{ range .Alerts.Resolved }} {{ template "alert" .}} {{ end }}
+	{{ end }}
+{{ end }}

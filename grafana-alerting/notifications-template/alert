@@ -1,0 +1,5 @@
+{{ define "alert" }}
+    {{.Annotations.AlertValues}} \
+    [Silence alert for {{.Labels.nodename}}]({{ .SilenceURL }}) \
+    ----------------------------
+{{ end }}
