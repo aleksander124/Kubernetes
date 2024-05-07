@@ -1,6 +1,0 @@
-apiVersion: v2
-name: cluster-setup
-description: A Helm chart to prepare a workshop cluster instance
-type: application
-version: 0.1.0
-appVersion: "0.1"

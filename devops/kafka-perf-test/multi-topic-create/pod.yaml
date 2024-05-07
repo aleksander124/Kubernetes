@@ -1,3 +1,5 @@
+# Debezium needs one more arg --config cleanup.policy=compact (and only one partition change in  cm)
+
 apiVersion: v1
 kind: Pod
 metadata:
