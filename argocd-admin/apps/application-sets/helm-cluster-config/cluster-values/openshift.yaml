@@ -1,6 +1,0 @@
-users:
-- name: "okonal"
-  clusterRole: "administrator"
-- name: "okonal"
-  clusterRole: "administrator"
-
